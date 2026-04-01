@@ -15,10 +15,10 @@ module mux2(s, a, b, y);
   input s, a, b;
   output y;
   wire ns, path_a, path_b;
-  nand#0 inv_ns(ns, s, s);
-  and#0 sel_a(path_a, a, ns);
-  and#0 sel_b(path_b, b, s);
-  or#0 merge(y, path_a, path_b);
+  nand inv_ns(ns, s, s);
+  and sel_a(path_a, a, ns);
+  and sel_b(path_b, b, s);
+  or merge(y, path_a, path_b);
 endmodule;
 ```
 
@@ -45,10 +45,10 @@ module xor_nand(a, b, y);
   input a, b;
   output y;
   wire t1, t2, t3;
-  nand#0 n1(t1, a, b);
+  nand n1(t1, a, b);
   nand#5 n2(t2, a, t1);
   nand#5 n3(t3, b, t1);
-  nand#0 n4(y, t2, t3);
+  nand n4(y, t2, t3);
 endmodule;
 ```
 
